@@ -46,19 +46,25 @@
         </Grid>
 
         <Frame Grid.Row="3" Padding="10" BorderColor="#334155" CornerRadius="16">
-            <CollectionView x:Name="TrackListView">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="12,8" ColumnDefinitions="*, Auto">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Title}" FontAttributes="Bold" />
-                                <Label Text="{Binding ArtistName}" FontSize="12" TextColor="#94A3B8" />
-                            </VerticalStackLayout>
-                            <Label Grid.Column="1" Text="{Binding AlbumTitle}" FontSize="12" TextColor="#CBD5E1" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <VerticalStackLayout Spacing="10">
+                <SearchBar x:Name="TrackSearchBar"
+                           Placeholder="Search tracks, artists, or albums"
+                           TextChanged="OnTrackSearchTextChanged" />
+
+                <CollectionView x:Name="TrackListView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="12,8" ColumnDefinitions="*, Auto">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                    <Label Text="{Binding ArtistName}" FontSize="12" TextColor="#94A3B8" />
+                                </VerticalStackLayout>
+                                <Label Grid.Column="1" Text="{Binding AlbumTitle}" FontSize="12" TextColor="#CBD5E1" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
         </Frame>
     </Grid>
 

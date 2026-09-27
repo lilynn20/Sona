@@ -13,12 +13,25 @@ public sealed class TrackQueryService : ITrackQueryService
         _dbContext = dbContext;
     }
 
-    public async Task<IReadOnlyList<TrackListItem>> GetTracksAsync(CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<TrackListItem>> GetTracksAsync(string? searchText = null, CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Tracks
+        var query = _dbContext.Tracks
             .AsNoTracking()
             .Include(x => x.Artist)
             .Include(x => x.Album)
+            .AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(searchText))
+        {
+            var normalizedSearch = searchText.Trim();
+            var lowerSearch = normalizedSearch.ToLower();
+            query = query.Where(x =>
+                x.Title.ToLower().Contains(lowerSearch) ||
+                (x.Artist != null && x.Artist.Name.ToLower().Contains(lowerSearch)) ||
+                (x.Album != null && x.Album.Title.ToLower().Contains(lowerSearch)));
+        }
+
+        return await query
             .OrderBy(x => x.Title)
             .Select(x => new TrackListItem(
                 x.Id,

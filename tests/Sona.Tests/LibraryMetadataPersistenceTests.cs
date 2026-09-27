@@ -152,6 +152,40 @@ public sealed class LibraryMetadataPersistenceTests
     }
 
     [Fact]
+    public async Task TrackQueryService_GetTracksAsync_WhenSearchTextMatches_ReturnsFilteredResults()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:");
+        await connection.OpenAsync();
+
+        var options = new DbContextOptionsBuilder<SonaDbContext>()
+            .UseSqlite(connection)
+            .Options;
+
+        await using (var context = new SonaDbContext(options))
+        {
+            await context.Database.EnsureCreatedAsync();
+
+            var beatles = new Artist { Name = "The Beatles" };
+            var radiohead = new Artist { Name = "Radiohead" };
+            var abbeyRoad = new Album { Title = "Abbey Road", Artist = beatles };
+            var okComputer = new Album { Title = "OK Computer", Artist = radiohead };
+
+            context.Tracks.AddRange(
+                new Track { Title = "Come Together", Artist = beatles, Album = abbeyRoad, FilePath = "C:/Music/Beatles/01.mp3" },
+                new Track { Title = "Paranoid Android", Artist = radiohead, Album = okComputer, FilePath = "C:/Music/Radiohead/02.mp3" });
+
+            await context.SaveChangesAsync();
+
+            var service = new TrackQueryService(context);
+            var results = await service.GetTracksAsync("beatles");
+
+            Assert.Single(results);
+            Assert.Equal("Come Together", results[0].Title);
+            Assert.Equal("The Beatles", results[0].ArtistName);
+        }
+    }
+
+    [Fact]
     public async Task SettingsService_WhenValueSaved_RetrievesConfiguredLibraryFolder()
     {
         await using var connection = new SqliteConnection("Data Source=:memory:");

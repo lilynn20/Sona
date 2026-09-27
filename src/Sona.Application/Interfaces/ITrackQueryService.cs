@@ -4,5 +4,5 @@ public sealed record TrackListItem(int Id, string Title, string ArtistName, stri
 
 public interface ITrackQueryService
 {
-    Task<IReadOnlyList<TrackListItem>> GetTracksAsync(CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<TrackListItem>> GetTracksAsync(string? searchText = null, CancellationToken cancellationToken = default);
 }

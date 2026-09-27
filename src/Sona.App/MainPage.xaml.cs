@@ -36,6 +36,11 @@ public partial class MainPage : ContentPage
         await ScanLibraryAsync();
     }
 
+    private async void OnTrackSearchTextChanged(object sender, TextChangedEventArgs e)
+    {
+        await RefreshTracksAsync();
+    }
+
     private void SetScanState(bool isScanning)
     {
         ScanLibraryButton.IsEnabled = !isScanning;
@@ -102,7 +107,8 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        var tracks = await trackQuery.GetTracksAsync();
+        var searchText = TrackSearchBar?.Text ?? string.Empty;
+        var tracks = await trackQuery.GetTracksAsync(searchText);
         TrackListView.ItemsSource = tracks;
         TrackCountLabel.Text = tracks.Count.ToString();
 
@@ -129,14 +135,16 @@ public partial class MainPage : ContentPage
                 {
                     new Label
                     {
-                        Text = "No music found yet",
+                        Text = string.IsNullOrWhiteSpace(searchText) ? "No music found yet" : "No matching tracks",
                         FontAttributes = FontAttributes.Bold,
                         FontSize = 18,
                         HorizontalTextAlignment = TextAlignment.Center
                     },
                     new Label
                     {
-                        Text = "Choose a folder in Settings and scan the library to import tracks.",
+                        Text = string.IsNullOrWhiteSpace(searchText)
+                            ? "Choose a folder in Settings and scan the library to import tracks."
+                            : "Try a different title, artist, or album name.",
                         TextColor = Colors.SlateGray,
                         HorizontalTextAlignment = TextAlignment.Center
                     }
