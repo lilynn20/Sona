@@ -22,7 +22,8 @@
                        Text="Library root: not configured"
                        FontSize="12"
                        TextColor="#CBD5E1" />
-                <Button Text="Scan library"
+                <Button x:Name="ScanLibraryButton"
+                        Text="Scan library"
                         Clicked="OnScanClicked"
                         HorizontalOptions="Fill" />
             </VerticalStackLayout>

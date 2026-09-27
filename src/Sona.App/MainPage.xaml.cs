@@ -36,6 +36,13 @@ public partial class MainPage : ContentPage
         await ScanLibraryAsync();
     }
 
+    private void SetScanState(bool isScanning)
+    {
+        ScanLibraryButton.IsEnabled = !isScanning;
+        ScanLibraryButton.Text = isScanning ? "Scanning..." : "Scan library";
+        LibraryStatusLabel.Text = isScanning ? "Importing library..." : LibraryStatusLabel.Text;
+    }
+
     private async Task ScanLibraryAsync()
     {
         var services = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
@@ -48,13 +55,13 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        await settings.EnsureInitializedAsync();
-        var scanRoot = await settings.GetLibraryRootAsync();
-
-        LibraryStatusLabel.Text = "Importing library...";
+        SetScanState(true);
 
         try
         {
+            await settings.EnsureInitializedAsync();
+            var scanRoot = await settings.GetLibraryRootAsync();
+
             var result = await importer.ImportAsync(scanRoot, CancellationToken.None);
 
             if (result.Errors.Count > 0)
@@ -77,6 +84,10 @@ public partial class MainPage : ContentPage
         catch (Exception ex)
         {
             LibraryStatusLabel.Text = $"Import failed: {ex.Message}";
+        }
+        finally
+        {
+            SetScanState(false);
         }
     }
 
