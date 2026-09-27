@@ -151,6 +151,29 @@ public sealed class LibraryMetadataPersistenceTests
         Directory.Delete(tempRoot, recursive: true);
     }
 
+    [Fact]
+    public async Task SettingsService_WhenValueSaved_RetrievesConfiguredLibraryFolder()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:");
+        await connection.OpenAsync();
+
+        var options = new DbContextOptionsBuilder<SonaDbContext>()
+            .UseSqlite(connection)
+            .Options;
+
+        await using (var context = new SonaDbContext(options))
+        {
+            await context.Database.EnsureCreatedAsync();
+            var service = new SettingsService(context);
+
+            var expected = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "Sona Library");
+            await service.SetValueAsync("libraryFolder", expected);
+
+            var actual = await service.GetValueAsync("libraryFolder", string.Empty);
+            Assert.Equal(expected, actual);
+        }
+    }
+
     private static async Task CreateValidMp3Async(string filePath)
     {
         var startInfo = new ProcessStartInfo

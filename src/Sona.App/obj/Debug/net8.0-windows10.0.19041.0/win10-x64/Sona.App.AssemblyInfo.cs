@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sona.App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+2ecf7d8da78d9946e9160426f1f663ea2acb27a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+1ef50252bd4ea85440130d9261ab7ff29fb91857")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sona.App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sona.App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

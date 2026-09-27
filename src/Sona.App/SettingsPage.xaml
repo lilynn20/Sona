@@ -4,24 +4,31 @@
              x:Class="Sona.App.SettingsPage"
              Title="Settings">
 
-    <VerticalStackLayout Padding="24" Spacing="18">
-        <Label Text="Settings" FontSize="32" FontAttributes="Bold" />
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="18">
+            <Label Text="Settings" FontSize="32" FontAttributes="Bold" />
 
-        <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
-            <VerticalStackLayout Spacing="10">
-                <Label Text="Library folders" FontAttributes="Bold" FontSize="18" />
-                <Label Text="Add folders to scan for music when Phase 2 is implemented." FontSize="14" />
-                <Button Text="Add folder" HorizontalOptions="Start" />
-            </VerticalStackLayout>
-        </Frame>
+            <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Library folder" FontAttributes="Bold" FontSize="18" />
+                    <Entry x:Name="LibraryFolderEntry"
+                           Placeholder="C:\\Music or a folder path"
+                           WidthRequest="300" />
+                    <Button x:Name="SaveFolderButton"
+                            Text="Save folder"
+                            Clicked="OnSaveFolderClicked"
+                            HorizontalOptions="Start" />
+                </VerticalStackLayout>
+            </Frame>
 
-        <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
-            <VerticalStackLayout Spacing="10">
-                <Label Text="App behavior" FontAttributes="Bold" FontSize="18" />
-                <CheckBox IsChecked="true" />
-                <Label Text="Start scanning automatically when the app opens" FontSize="14" />
-            </VerticalStackLayout>
-        </Frame>
-    </VerticalStackLayout>
+            <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="App behavior" FontAttributes="Bold" FontSize="18" />
+                    <CheckBox x:Name="AutoScanCheckBox" IsChecked="true" />
+                    <Label Text="Start scanning automatically when the app opens" FontSize="14" />
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
