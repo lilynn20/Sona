@@ -84,6 +84,7 @@ public partial class MainPage : ContentPage
     {
         var services = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
         var trackQuery = services?.GetService<ITrackQueryService>();
+        var settings = services?.GetService<ISettingsService>();
 
         if (trackQuery is null)
         {
@@ -100,6 +101,40 @@ public partial class MainPage : ContentPage
             .Count();
 
         ArtistCountLabel.Text = uniqueArtists.ToString();
+
+        if (settings is not null)
+        {
+            var rootPath = await settings.GetLibraryRootAsync();
+            LibraryPathLabel.Text = $"Library root: {rootPath}";
+        }
+
+        if (tracks.Count == 0)
+        {
+            TrackListView.EmptyView = new VerticalStackLayout
+            {
+                Padding = new Thickness(24),
+                Spacing = 8,
+                Children =
+                {
+                    new Label
+                    {
+                        Text = "No music found yet",
+                        FontAttributes = FontAttributes.Bold,
+                        FontSize = 18,
+                        HorizontalTextAlignment = TextAlignment.Center
+                    },
+                    new Label
+                    {
+                        Text = "Choose a folder in Settings and scan the library to import tracks.",
+                        TextColor = Colors.SlateGray,
+                        HorizontalTextAlignment = TextAlignment.Center
+                    }
+                }
+            };
+            return;
+        }
+
+        TrackListView.EmptyView = null;
     }
 }
 

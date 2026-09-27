@@ -18,6 +18,10 @@
                 <Label x:Name="LibraryStatusLabel"
                        Text="No scan has run yet."
                        FontSize="16" />
+                <Label x:Name="LibraryPathLabel"
+                       Text="Library root: not configured"
+                       FontSize="12"
+                       TextColor="#CBD5E1" />
                 <Button Text="Scan library"
                         Clicked="OnScanClicked"
                         HorizontalOptions="Fill" />
