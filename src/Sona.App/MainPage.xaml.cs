@@ -1,4 +1,5 @@
-﻿using Sona.Application.Interfaces;
+﻿using Microsoft.Maui.Controls;
+using Sona.Application.Interfaces;
 
 namespace Sona.App;
 
@@ -11,24 +12,24 @@ public partial class MainPage : ContentPage
 
     private async void OnScanClicked(object sender, EventArgs e)
     {
-        var services = Application.Current?.Handler?.MauiContext?.Services;
-        var scanner = services?.GetService<ILibraryScanner>();
+        var services = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
+        var importer = services?.GetService<ILibraryImportService>();
         var settings = services?.GetService<ISettingsService>();
 
-        if (scanner is null || settings is null)
+        if (importer is null || settings is null)
         {
-            LibraryStatusLabel.Text = "The library scanner is not available.";
+            LibraryStatusLabel.Text = "The library import service is not available.";
             return;
         }
 
         var configuredFolder = await settings.GetValueAsync("libraryFolder", Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
         var scanRoot = string.IsNullOrWhiteSpace(configuredFolder) ? Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) : configuredFolder;
 
-        LibraryStatusLabel.Text = "Scanning library...";
+        LibraryStatusLabel.Text = "Importing library...";
 
         try
         {
-            var result = await scanner.ScanAsync(scanRoot, CancellationToken.None);
+            var result = await importer.ImportAsync(scanRoot, CancellationToken.None);
 
             if (result.Errors.Count > 0)
             {
@@ -36,19 +37,19 @@ public partial class MainPage : ContentPage
                 return;
             }
 
-            LibraryStatusLabel.Text = result.FilesFound > 0
-                ? $"Scanned {result.FilesFound} audio files across {result.FoldersScanned} folders."
+            LibraryStatusLabel.Text = result.FilesImported > 0
+                ? $"Imported {result.FilesImported} audio files into the library database."
                 : "No supported audio files were found in the configured library path.";
 
             SemanticScreenReader.Announce(LibraryStatusLabel.Text);
         }
         catch (OperationCanceledException)
         {
-            LibraryStatusLabel.Text = "Library scan was cancelled.";
+            LibraryStatusLabel.Text = "Library import was cancelled.";
         }
         catch (Exception ex)
         {
-            LibraryStatusLabel.Text = $"Scan failed: {ex.Message}";
+            LibraryStatusLabel.Text = $"Import failed: {ex.Message}";
         }
     }
 }

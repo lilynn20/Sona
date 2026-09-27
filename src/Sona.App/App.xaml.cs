@@ -1,6 +1,8 @@
-﻿namespace Sona.App;
+﻿using Microsoft.Maui.Controls;
 
-public partial class App : Application
+namespace Sona.App;
+
+public partial class App : Microsoft.Maui.Controls.Application
 {
 	public App()
 	{

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sona.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcb3bf8a54e0fb1dd013dfbb5d20e9a73ece90fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2a5fdf2c1d353aa496640b9b495f9b72763c2e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sona.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sona.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
