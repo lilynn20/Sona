@@ -1,0 +1,32 @@
+# Build outputs
+bin/
+obj/
+out/
+artifacts/
+
+# User-specific files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# MAUI / .NET generated runtime artifacts
+*.apk
+*.aab
+*.appx
+*.msix
+*.pfx
+*.publish.xml
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Rider / JetBrains
+.idea/
+*.iml
+
+# Logs
+*.log

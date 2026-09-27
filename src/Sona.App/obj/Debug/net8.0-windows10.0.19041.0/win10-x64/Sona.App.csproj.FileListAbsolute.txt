@@ -175,3 +175,4 @@ c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.1904
 c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+C:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Sona.App.sourcelink.json

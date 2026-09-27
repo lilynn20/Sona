@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sona.App.SettingsPage"
+             Title="Settings">
+
+    <VerticalStackLayout Padding="24" Spacing="18">
+        <Label Text="Settings" FontSize="32" FontAttributes="Bold" />
+
+        <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Library folders" FontAttributes="Bold" FontSize="18" />
+                <Label Text="Add folders to scan for music when Phase 2 is implemented." FontSize="14" />
+                <Button Text="Add folder" HorizontalOptions="Start" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="App behavior" FontAttributes="Bold" FontSize="18" />
+                <CheckBox IsChecked="true" />
+                <Label Text="Start scanning automatically when the app opens" FontSize="14" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+
+</ContentPage>

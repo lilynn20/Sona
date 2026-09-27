@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj": {}
+    "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj": {}
   },
   "projects": {
-    "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj": {
+    "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj",
         "projectName": "Sona.App",
-        "projectPath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\Sona.App.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"
