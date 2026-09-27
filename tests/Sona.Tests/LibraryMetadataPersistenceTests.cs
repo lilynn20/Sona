@@ -174,6 +174,32 @@ public sealed class LibraryMetadataPersistenceTests
         }
     }
 
+    [Fact]
+    public async Task SettingsService_GetLibraryRootAsync_UsesConfiguredFolderOrDefault()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:");
+        await connection.OpenAsync();
+
+        var options = new DbContextOptionsBuilder<SonaDbContext>()
+            .UseSqlite(connection)
+            .Options;
+
+        await using (var context = new SonaDbContext(options))
+        {
+            await context.Database.EnsureCreatedAsync();
+            var service = new SettingsService(context);
+
+            var defaultRoot = await service.GetLibraryRootAsync();
+            Assert.Equal(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), defaultRoot);
+
+            var customRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "Custom Sona Library");
+            await service.SetValueAsync("libraryFolder", customRoot);
+
+            var resolvedRoot = await service.GetLibraryRootAsync();
+            Assert.Equal(customRoot, resolvedRoot);
+        }
+    }
+
     private static async Task CreateValidMp3Async(string filePath)
     {
         var startInfo = new ProcessStartInfo

@@ -13,10 +13,30 @@ public partial class MainPage : ContentPage
 
     private async void OnPageLoaded(object? sender, EventArgs e)
     {
+        var services = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
+        var settings = services?.GetService<ISettingsService>();
+
+        if (settings is null)
+        {
+            return;
+        }
+
+        await settings.EnsureInitializedAsync();
+
+        if (await settings.GetAutoScanAsync())
+        {
+            await ScanLibraryAsync();
+        }
+
         await RefreshTracksAsync();
     }
 
     private async void OnScanClicked(object sender, EventArgs e)
+    {
+        await ScanLibraryAsync();
+    }
+
+    private async Task ScanLibraryAsync()
     {
         var services = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
         var importer = services?.GetService<ILibraryImportService>();
@@ -28,8 +48,8 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        var configuredFolder = await settings.GetValueAsync("libraryFolder", Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
-        var scanRoot = string.IsNullOrWhiteSpace(configuredFolder) ? Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) : configuredFolder;
+        await settings.EnsureInitializedAsync();
+        var scanRoot = await settings.GetLibraryRootAsync();
 
         LibraryStatusLabel.Text = "Importing library...";
 

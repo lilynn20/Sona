@@ -52,4 +52,17 @@ public sealed class SettingsService : ISettingsService
 
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<string> GetLibraryRootAsync(CancellationToken cancellationToken = default)
+    {
+        var configuredFolder = await GetValueAsync("libraryFolder", string.Empty, cancellationToken);
+        return string.IsNullOrWhiteSpace(configuredFolder)
+            ? Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)
+            : configuredFolder;
+    }
+
+    public async Task<bool> GetAutoScanAsync(CancellationToken cancellationToken = default)
+    {
+        return await GetValueAsync("autoScan", true, cancellationToken);
+    }
 }
