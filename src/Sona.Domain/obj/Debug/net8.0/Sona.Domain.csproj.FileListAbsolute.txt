@@ -9,3 +9,4 @@ c:\Users\hp\Desktop\projects\sona\src\Sona.Domain\obj\Debug\net8.0\Sona.Domain.d
 c:\Users\hp\Desktop\projects\sona\src\Sona.Domain\obj\Debug\net8.0\refint\Sona.Domain.dll
 c:\Users\hp\Desktop\projects\sona\src\Sona.Domain\obj\Debug\net8.0\Sona.Domain.pdb
 c:\Users\hp\Desktop\projects\sona\src\Sona.Domain\obj\Debug\net8.0\ref\Sona.Domain.dll
+C:\Users\hp\Desktop\projects\sona\src\Sona.Domain\obj\Debug\net8.0\Sona.Domain.sourcelink.json

@@ -2939,11 +2939,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
       "projectName": "Sona.Infrastructure",
-      "projectPath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2959,11 +2959,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Application\\Sona.Application.csproj": {
-              "projectPath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Application\\Sona.Application.csproj"
+            "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Application\\Sona.Application.csproj": {
+              "projectPath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Application\\Sona.Application.csproj"
             },
-            "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Domain\\Sona.Domain.csproj": {
-              "projectPath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Domain\\Sona.Domain.csproj"
+            "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Domain\\Sona.Domain.csproj": {
+              "projectPath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Domain\\Sona.Domain.csproj"
             }
           }
         }

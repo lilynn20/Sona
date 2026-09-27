@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kJvvwL3cVfA=",
+  "dgSpecHash": "8DwyzbZEHyk=",
   "success": true,
-  "projectFilePath": "c:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

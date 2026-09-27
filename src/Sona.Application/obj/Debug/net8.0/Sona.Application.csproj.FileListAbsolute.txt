@@ -13,3 +13,4 @@ c:\Users\hp\Desktop\projects\sona\src\Sona.Application\obj\Debug\net8.0\Sona.App
 c:\Users\hp\Desktop\projects\sona\src\Sona.Application\obj\Debug\net8.0\refint\Sona.Application.dll
 c:\Users\hp\Desktop\projects\sona\src\Sona.Application\obj\Debug\net8.0\Sona.Application.pdb
 c:\Users\hp\Desktop\projects\sona\src\Sona.Application\obj\Debug\net8.0\ref\Sona.Application.dll
+C:\Users\hp\Desktop\projects\sona\src\Sona.Application\obj\Debug\net8.0\Sona.Application.sourcelink.json

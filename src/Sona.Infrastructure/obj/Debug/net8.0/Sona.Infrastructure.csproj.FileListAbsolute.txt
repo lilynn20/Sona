@@ -17,3 +17,4 @@ c:\Users\hp\Desktop\projects\sona\src\Sona.Infrastructure\obj\Debug\net8.0\refin
 c:\Users\hp\Desktop\projects\sona\src\Sona.Infrastructure\obj\Debug\net8.0\Sona.Infrastructure.pdb
 c:\Users\hp\Desktop\projects\sona\src\Sona.Infrastructure\obj\Debug\net8.0\Sona.Infrastructure.genruntimeconfig.cache
 c:\Users\hp\Desktop\projects\sona\src\Sona.Infrastructure\obj\Debug\net8.0\ref\Sona.Infrastructure.dll
+C:\Users\hp\Desktop\projects\sona\src\Sona.Infrastructure\obj\Debug\net8.0\Sona.Infrastructure.sourcelink.json
