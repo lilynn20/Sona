@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Sona.Application.Interfaces;
 using Sona.Domain;
 using Sona.Infrastructure.Data;
+using TagLib;
 
 namespace Sona.Infrastructure.Services;
 
@@ -9,6 +10,7 @@ public sealed class LibraryImportService : ILibraryImportService
 {
     private const string SupportedAudioExtensions = ".mp3;.flac;.wav;.m4a;.aac;.ogg;.wma";
     private readonly SonaDbContext _dbContext;
+    private sealed record AudioMetadata(string Title, string ArtistName, string AlbumTitle);
 
     public LibraryImportService(SonaDbContext dbContext)
     {
@@ -43,8 +45,16 @@ public sealed class LibraryImportService : ILibraryImportService
                     ? Path.GetFileName(dir)
                     : string.Empty;
 
-                var artistName = GetArtistName(rootPath, file);
-                var albumTitle = GetAlbumTitle(rootPath, file, directoryName);
+                var metadata = ReadAudioMetadata(file);
+                var artistName = !string.IsNullOrWhiteSpace(metadata.ArtistName)
+                    ? metadata.ArtistName
+                    : GetArtistName(rootPath, file);
+                var albumTitle = !string.IsNullOrWhiteSpace(metadata.AlbumTitle)
+                    ? metadata.AlbumTitle
+                    : GetAlbumTitle(rootPath, file, directoryName);
+                var trackTitle = !string.IsNullOrWhiteSpace(metadata.Title)
+                    ? metadata.Title
+                    : fileName;
 
                 var artist = await _dbContext.Artists.FirstOrDefaultAsync(x => x.Name == artistName, cancellationToken)
                     ?? new Artist { Name = artistName };
@@ -70,7 +80,7 @@ public sealed class LibraryImportService : ILibraryImportService
 
                 var track = new Track
                 {
-                    Title = fileName,
+                    Title = trackTitle,
                     FilePath = file,
                     Artist = artist,
                     Album = album,
@@ -97,6 +107,38 @@ public sealed class LibraryImportService : ILibraryImportService
         }
 
         return new LibraryImportResult(filesImported, errors);
+    }
+
+    private static AudioMetadata ReadAudioMetadata(string filePath)
+    {
+        try
+        {
+            using var file = TagLib.File.Create(filePath);
+            var title = Sanitize(file.Tag.Title);
+            var artist = file.Tag.Performers is { Length: > 0 }
+                ? Sanitize(file.Tag.Performers[0])
+                : Sanitize(file.Tag.AlbumArtists.FirstOrDefault());
+            var album = Sanitize(file.Tag.Album);
+
+            return new AudioMetadata(
+                title ?? Path.GetFileNameWithoutExtension(filePath),
+                artist ?? string.Empty,
+                album ?? string.Empty);
+        }
+        catch
+        {
+            return new AudioMetadata(string.Empty, string.Empty, string.Empty);
+        }
+    }
+
+    private static string? Sanitize(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        return value.Trim();
     }
 
     private static string GetArtistName(string rootPath, string filePath)

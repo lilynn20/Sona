@@ -663,6 +663,14 @@
           "System.Text.Encodings.Web": "8.0.0"
         }
       },
+      "TagLibSharp/2.3.0": {
+        "runtime": {
+          "lib/netstandard2.0/TagLibSharp.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.0"
+          }
+        }
+      },
       "Sona.Application/1.0.0": {
         "dependencies": {
           "Sona.Domain": "1.0.0"
@@ -689,7 +697,8 @@
           "Microsoft.Extensions.Configuration.Json": "8.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
           "Sona.Application": "1.0.0",
-          "Sona.Domain": "1.0.0"
+          "Sona.Domain": "1.0.0",
+          "TagLibSharp": "2.3.0"
         },
         "runtime": {
           "Sona.Infrastructure.dll": {
@@ -1025,6 +1034,13 @@
       "sha512": "sha512-bAkhgDJ88XTsqczoxEMliSrpijKZHhbJQldhAmObj/RbrN3sU5dcokuXmWJWsdQAhiMJ9bTayWsL1C9fbbCRhw==",
       "path": "system.text.json/8.0.4",
       "hashPath": "system.text.json.8.0.4.nupkg.sha512"
+    },
+    "TagLibSharp/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Qo4z6ZjnIfbR3Us1Za5M2vQ97OWZPmODvVmepxZ8XW0UIVLGdO2T63/N3b23kCcyiwuIe0TQvMEQG8wUCCD1mA==",
+      "path": "taglibsharp/2.3.0",
+      "hashPath": "taglibsharp.2.3.0.nupkg.sha512"
     },
     "Sona.Application/1.0.0": {
       "type": "project",

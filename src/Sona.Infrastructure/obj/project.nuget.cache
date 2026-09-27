@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8DwyzbZEHyk=",
+  "dgSpecHash": "52ETLs0g0yw=",
   "success": true,
   "projectFilePath": "C:\\Users\\hp\\Desktop\\projects\\sona\\src\\Sona.Infrastructure\\Sona.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -56,7 +56,8 @@
     "C:\\Users\\hp\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512",
-    "C:\\Users\\hp\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
+    "C:\\Users\\hp\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512"
   ],
   "logs": []
 }
