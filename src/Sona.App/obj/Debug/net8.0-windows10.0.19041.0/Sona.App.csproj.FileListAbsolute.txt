@@ -1,0 +1,5 @@
+c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\Sona.App.csproj.AssemblyReference.cache
+c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\Sona.App.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\Sona.App.AssemblyInfoInputs.cache
+c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\Sona.App.AssemblyInfo.cs
+c:\Users\hp\Desktop\projects\sona\src\Sona.App\obj\Debug\net8.0-windows10.0.19041.0\Sona.App.csproj.CoreCompileInputs.cache
