@@ -38,6 +38,23 @@ public partial class MainPage : ContentPage
 
     private async void OnTrackSearchTextChanged(object sender, TextChangedEventArgs e)
     {
+        if (TrackSearchBar is null)
+        {
+            return;
+        }
+
+        ClearSearchButton.IsEnabled = !string.IsNullOrWhiteSpace(TrackSearchBar.Text);
+        await RefreshTracksAsync();
+    }
+
+    private async void OnClearSearchClicked(object sender, EventArgs e)
+    {
+        if (TrackSearchBar is null)
+        {
+            return;
+        }
+
+        TrackSearchBar.Text = string.Empty;
         await RefreshTracksAsync();
     }
 

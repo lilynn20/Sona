@@ -47,9 +47,17 @@
 
         <Frame Grid.Row="3" Padding="10" BorderColor="#334155" CornerRadius="16">
             <VerticalStackLayout Spacing="10">
-                <SearchBar x:Name="TrackSearchBar"
-                           Placeholder="Search tracks, artists, or albums"
-                           TextChanged="OnTrackSearchTextChanged" />
+                <Grid ColumnDefinitions="*, Auto">
+                    <SearchBar x:Name="TrackSearchBar"
+                               Grid.Column="0"
+                               Placeholder="Search tracks, artists, or albums"
+                               TextChanged="OnTrackSearchTextChanged" />
+                    <Button x:Name="ClearSearchButton"
+                            Grid.Column="1"
+                            Text="Clear"
+                            Clicked="OnClearSearchClicked"
+                            IsEnabled="False" />
+                </Grid>
 
                 <CollectionView x:Name="TrackListView">
                     <CollectionView.ItemTemplate>
