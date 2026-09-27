@@ -28,6 +28,7 @@ public static class MauiProgram
 		builder.Services.AddScoped<ISettingsService, SettingsService>();
 		builder.Services.AddScoped<ILibraryScanner, LibraryScannerService>();
 		builder.Services.AddScoped<ILibraryImportService, LibraryImportService>();
+		builder.Services.AddScoped<ITrackQueryService, TrackQueryService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -8,6 +8,12 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        Loaded += OnPageLoaded;
+    }
+
+    private async void OnPageLoaded(object? sender, EventArgs e)
+    {
+        await RefreshTracksAsync();
     }
 
     private async void OnScanClicked(object sender, EventArgs e)
@@ -41,6 +47,7 @@ public partial class MainPage : ContentPage
                 ? $"Imported {result.FilesImported} audio files into the library database."
                 : "No supported audio files were found in the configured library path.";
 
+            await RefreshTracksAsync();
             SemanticScreenReader.Announce(LibraryStatusLabel.Text);
         }
         catch (OperationCanceledException)
@@ -51,6 +58,28 @@ public partial class MainPage : ContentPage
         {
             LibraryStatusLabel.Text = $"Import failed: {ex.Message}";
         }
+    }
+
+    private async Task RefreshTracksAsync()
+    {
+        var services = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services;
+        var trackQuery = services?.GetService<ITrackQueryService>();
+
+        if (trackQuery is null)
+        {
+            return;
+        }
+
+        var tracks = await trackQuery.GetTracksAsync();
+        TrackListView.ItemsSource = tracks;
+        TrackCountLabel.Text = tracks.Count.ToString();
+
+        var uniqueArtists = tracks
+            .Select(x => x.ArtistName)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Count();
+
+        ArtistCountLabel.Text = uniqueArtists.ToString();
     }
 }
 

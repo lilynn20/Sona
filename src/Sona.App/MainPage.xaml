@@ -4,43 +4,57 @@
              x:Class="Sona.App.MainPage"
              Title="Sona">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="18">
-            <Border StrokeShape="RoundRectangle 18" BackgroundColor="#1E293B" Padding="20">
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="Sona" FontSize="36" FontAttributes="Bold" TextColor="White" />
-                    <Label Text="Local-first music library manager" FontSize="16" TextColor="#C7D2FE" />
-                </VerticalStackLayout>
-            </Border>
+    <Grid Padding="24" RowDefinitions="Auto, Auto, Auto, *" RowSpacing="18">
+        <Border Grid.Row="0" StrokeShape="RoundRectangle 18" BackgroundColor="#1E293B" Padding="20">
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Sona" FontSize="36" FontAttributes="Bold" TextColor="White" />
+                <Label Text="Local-first music library manager" FontSize="16" TextColor="#C7D2FE" />
+            </VerticalStackLayout>
+        </Border>
 
-            <Frame Padding="18" BorderColor="#334155" CornerRadius="16">
-                <VerticalStackLayout Spacing="12">
-                    <Label Text="Library status" FontAttributes="Bold" FontSize="18" />
-                    <Label x:Name="LibraryStatusLabel"
-                           Text="No scan has run yet."
-                           FontSize="16" />
-                    <Button Text="Scan library"
-                            Clicked="OnScanClicked"
-                            HorizontalOptions="Fill" />
+        <Frame Grid.Row="1" Padding="18" BorderColor="#334155" CornerRadius="16">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="Library status" FontAttributes="Bold" FontSize="18" />
+                <Label x:Name="LibraryStatusLabel"
+                       Text="No scan has run yet."
+                       FontSize="16" />
+                <Button Text="Scan library"
+                        Clicked="OnScanClicked"
+                        HorizontalOptions="Fill" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*, *" ColumnSpacing="12" RowDefinitions="Auto" RowSpacing="12">
+            <Frame Grid.Column="0" Padding="14" BorderColor="#334155" CornerRadius="12">
+                <VerticalStackLayout>
+                    <Label Text="Tracks" FontAttributes="Bold" />
+                    <Label x:Name="TrackCountLabel" Text="0" FontSize="28" />
                 </VerticalStackLayout>
             </Frame>
 
-            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" RowDefinitions="Auto, Auto" RowSpacing="12">
-                <Frame Grid.Column="0" Padding="14" BorderColor="#334155" CornerRadius="12">
-                    <VerticalStackLayout>
-                        <Label Text="Tracks" FontAttributes="Bold" />
-                        <Label Text="0" FontSize="28" />
-                    </VerticalStackLayout>
-                </Frame>
+            <Frame Grid.Column="1" Padding="14" BorderColor="#334155" CornerRadius="12">
+                <VerticalStackLayout>
+                    <Label Text="Artists" FontAttributes="Bold" />
+                    <Label x:Name="ArtistCountLabel" Text="0" FontSize="28" />
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
 
-                <Frame Grid.Column="1" Padding="14" BorderColor="#334155" CornerRadius="12">
-                    <VerticalStackLayout>
-                        <Label Text="Artists" FontAttributes="Bold" />
-                        <Label Text="0" FontSize="28" />
-                    </VerticalStackLayout>
-                </Frame>
-            </Grid>
-        </VerticalStackLayout>
-    </ScrollView>
+        <Frame Grid.Row="3" Padding="10" BorderColor="#334155" CornerRadius="16">
+            <CollectionView x:Name="TrackListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12,8" ColumnDefinitions="*, Auto">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                <Label Text="{Binding ArtistName}" FontSize="12" TextColor="#94A3B8" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="{Binding AlbumTitle}" FontSize="12" TextColor="#CBD5E1" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
+    </Grid>
 
 </ContentPage>
